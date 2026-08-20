@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+    ========================================
+    EDIT INSTRUCTIONS FOR AHMEDBLENDZ SITE
+    ========================================
+    
+    MAIN SETTINGS TO CUSTOMIZE:
+    1. Business Name: Search for "AhmedBlendz" and replace
+    2. Phone Number: (513) 663-1376 - Change in FOOTER section
+    3. Services & Prices: Edit in SERVICES SECTION
+    4. Hours: "By Appointment" - Change in FOOTER
+    5. Instagram Link: Update in FOOTER
+    
+    STRUCTURE OVERVIEW:
+    - Services Grid (6 services shown)
+    - Testimonials (3 client reviews)
+    - Booking Form (Collects name, phone, email, service, date, time)
+    - Footer (Hours, contact, social links)
+    
+    ======================================== 
+    -->
+    <title>AhmedBlendz - Premium Barbershop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+
+
+        /* ============ SERVICES GRID ============ */
+        .services-section {
+            padding: 80px 3rem;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: #0f2818;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -1px;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-top: 4px solid #0f2818;
+            transition: all 0.3s ease;
+        }
+
+        .service:hover {
+            border-top-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .service h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f2818;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* EDIT: Change service names here */
+        }
+
+        .service p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            /* EDIT: Change service descriptions here */
+        }
+
+        .service-price {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d4af37;
+            /* EDIT: Change prices here */
+        }
+
+        /* ============ TESTIMONIALS ============ */
+        .testimonials-section {
+            padding: 100px 3rem;
+            background: #f9f9f9;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .stars {
+            font-size: 13px;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            /* EDIT: Change testimonial text here */
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #0f2818;
+            font-size: 15px;
+            /* EDIT: Change client names here */
+        }
+
+        .testimonial-role {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============ BOOKING SECTION ============ */
+        .booking-section {
+            padding: 100px 3rem;
+            background: white;
+        }
+
+        .booking-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 0;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            color: #0f2818;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            font-size: 14px;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0f2818;
+            box-shadow: 0 0 0 3px rgba(15, 40, 24, 0.05);
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-radius: 0;
+        }
+
+        .time-slot:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .time-slot.active {
+            background: #0f2818;
+            color: #d4af37;
+            border-color: #0f2818;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #0f2818;
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 0;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .submit-btn:hover {
+            background: #d4af37;
+            color: #0f2818;
+        }
+
+        .message {
+            padding: 14px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #d4af37;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(212, 175, 55, 0.1);
+            color: #0f2818;
+        }
+
+        .message.error {
+            background: rgba(204, 0, 0, 0.1);
+            border-left-color: #cc0000;
+            color: #cc0000;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: #0f2818;
+            color: #d0d0d0;
+            padding: 60px 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            /* EDIT: Change business hours in HOURS section */
+        }
+
+        .footer-col a {
+            color: #d0d0d0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: #d4af37;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            background: #d4af37;
+            color: #0f2818;
+            padding: 12px 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            /* EDIT: Update Instagram URL in CONNECT section */
+        }
+
+        .instagram-link:hover {
+            background: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .location-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .time-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                gap: 30px;
+            }
+
+            .services-section,
+            .testimonials-section,
+            .booking-section {
+                padding: 60px 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- ====================================
+         SERVICES SECTION
+         ==================================== -->
+    <section id="services" class="services-section">
+        <h2 class="section-title">Our Services</h2>
+        <!-- EDIT SERVICES: Update the 6 services below -->
+        <div class="services-grid">
+            <div class="service">
+                <h3>Classic Haircut</h3>
+                <!-- EDIT: Service name -->
+                <p>Precision cut with hot towel finish</p>
+                <!-- EDIT: Service description -->
+                <div class="service-price">$25</div>
+                <!-- EDIT: Price -->
+            </div>
+            <div class="service">
+                <h3>Fade</h3>
+                <p>Detailed fade with sharp lines</p>
+                <div class="service-price">$30</div>
+            </div>
+            <div class="service">
+                <h3>Beard Trim</h3>
+                <p>Shape and edge work with oil</p>
+                <div class="service-price">$15</div>
+            </div>
+            <div class="service">
+                <h3>Haircut & Beard</h3>
+                <p>Complete grooming package</p>
+                <div class="service-price">$40</div>
+            </div>
+            <div class="service">
+                <h3>Line Up</h3>
+                <p>Edge work and detail grooming</p>
+                <div class="service-price">$10</div>
+            </div>
+            <div class="service">
+                <h3>Hot Shave</h3>
+                <p>Traditional shave with straight razor</p>
+                <div class="service-price">$20</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         TESTIMONIALS SECTION
+         ==================================== -->
+    <section id="testimonials" class="testimonials-section">
+        <h2 class="section-title">Client Reviews</h2>
+        <!-- EDIT TESTIMONIALS: Update reviews below -->
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Ahmed is a true craftsman. The precision in every cut is exceptional. I trust him completely with my hair."</p>
+                <!-- EDIT: Testimonial quote -->
+                <div class="testimonial-author">Marcus T.</div>
+                <!-- EDIT: Client name -->
+                <div class="testimonial-role">Regular Client</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Best barber in the area. Professional, meticulous, and genuinely cares about the final result. Highly recommended."</p>
+                <div class="testimonial-author">James L.</div>
+                <div class="testimonial-role">Regular Client</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"The whole experience is premium. From the atmosphere to the service, everything is top-tier. Worth every dollar."</p>
+                <div class="testimonial-author">David K.</div>
+                <div class="testimonial-role">Regular Client</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         BOOKING SECTION
+         ==================================== -->
+    <section id="book" class="booking-section">
+        <div class="booking-container">
+            <h2 class="section-title">Book Your Appointment</h2>
+            
+            <div class="booking-form" id="bookingFormContainer">
+                <div class="message success" id="successMsg">Booking confirmed. We'll contact you shortly to finalize your appointment.</div>
+                <div class="message error" id="errorMsg"></div>
+
+                <form id="bookingFormElement" action="https://formspree.io/f/moearlne" method="POST">
+                    <!-- 
+                    IMPORTANT: To receive booking emails, you MUST:
+                    1. Go to https://formspree.io
+                    2. Sign up for free
+                    3. Create a new form
+                    4. Get your form endpoint (looks like: https://formspree.io/f/XXXXX)
+                    5. Replace the "action" attribute above with your endpoint
+                    Example: action="https://formspree.io/f/xyzabc123"
+                    -->
+
+                    <!-- Name field -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+
+                    <!-- Phone field -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(513) 663-1376" required>
+                    </div>
+
+                    <!-- Email field -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <!-- Service selection -->
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <!-- EDIT: Update service options to match your services list above -->
+                            <option value="Classic Haircut - $25">Classic Haircut - $25</option>
+                            <option value="Fade - $30">Fade - $30</option>
+                            <option value="Beard Trim - $15">Beard Trim - $15</option>
+                            <option value="Haircut & Beard - $40">Haircut & Beard - $40</option>
+                            <option value="Line Up - $10">Line Up - $10</option>
+                            <option value="Hot Shave - $20">Hot Shave - $20</option>
+                        </select>
+                    </div>
+
+                    <!-- Date selection -->
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <!-- Time selection -->
+                    <div class="form-group">
+                        <label>Time</label>
+                        <!-- EDIT TIME SLOTS: Add or remove times as needed -->
+                        <div class="time-grid" id="timeGrid">
+                            <div class="time-slot" onclick="selectTime(this, '9:00 AM')">9:00 AM</div>
+                            <div class="time-slot" onclick="selectTime(this, '10:00 AM')">10:00 AM</div>
+                            <div class="time-slot" onclick="selectTime(this, '11:00 AM')">11:00 AM</div>
+                            <div class="time-slot" onclick="selectTime(this, '12:00 PM')">12:00 PM</div>
+                            <div class="time-slot" onclick="selectTime(this, '1:00 PM')">1:00 PM</div>
+                            <div class="time-slot" onclick="selectTime(this, '2:00 PM')">2:00 PM</div>
+                            <div class="time-slot" onclick="selectTime(this, '3:00 PM')">3:00 PM</div>
+                            <div class="time-slot" onclick="selectTime(this, '4:00 PM')">4:00 PM</div>
+                            <div class="time-slot" onclick="selectTime(this, '5:00 PM')">5:00 PM</div>
+                        </div>
+                        <input type="hidden" id="selectedTime" name="selectedTime">
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="submit-btn">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================
+         FOOTER
+         ==================================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- Hours Column -->
+                <div class="footer-col">
+                    <h4>Hours</h4>
+                    <!-- EDIT: Change business hours here -->
+                    <p>By Appointment</p>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <!-- EDIT: Update phone number here -->
+                    <p><a href="tel:+15136631376">(513) 663-1376</a></p>
+                    <!-- EDIT: Update location here -->
+                    <p>Cincinnati, Ohio</p>
+                </div>
+
+                <!-- Connect Column -->
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <!-- EDIT: Update Instagram link if needed -->
+                    <a href="https://www.instagram.com/ahmedblendz7?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="instagram-link">
+                        Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <!-- EDIT: Update business name in copyright -->
+                <p>&copy; 2024 AhmedBlendz. Premium Barbering.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====================================
+         JAVASCRIPT / INTERACTIONS
+         ==================================== -->
+    <script>
+        // Handle time slot selection
+        function selectTime(el, time) {
+            document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('selectedTime').value = time;
+        }
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        // Handle form submission
+        document.getElementById('bookingFormElement').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('selectedTime').value;
+
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+
+            errorMsg.classList.remove('show');
+            successMsg.classList.remove('show');
+
+            // Validation
+            if (!name || !phone || !email || !service || !date || !time) {
+                e.preventDefault();
+                errorMsg.textContent = 'Please fill in all fields and select a time.';
+                errorMsg.classList.add('show');
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return false;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                e.preventDefault();
+                errorMsg.textContent = 'Please enter a valid email.';
+                errorMsg.classList.add('show');
+                errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return false;
+            }
+
+            // Show success message before form submits
+            successMsg.classList.add('show');
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Allow form to submit normally to Formspree
+            // Form will redirect after successful submission
+        });
+    </script>
+</body>
+</html>
